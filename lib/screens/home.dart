@@ -29,7 +29,21 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             HeroWidget(),
-            //  const HighlightsWidget(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: .1.sw),
+                padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
+                child: Text(
+                  'Strengths 💪🏋🏻',
+                  style: TextStyle(
+                      color: Colors.lightGreenAccent,
+                      fontSize: .025.sh,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+            SizedBox(height: .01.sh),
             const StrengthWidget(),
             SizedBox(
               height: 1.sh,

@@ -134,7 +134,8 @@ class HeroWidget extends StatelessWidget {
                                 child: const Center(
                                   child: ClipOval(
                                     child: Image(
-                                      image: AssetImage('assets/images/dp.jpg'),
+                                      image: AssetImage(
+                                          'assets/images/dp_nobg.png'),
                                     ),
                                   ),
                                 ),

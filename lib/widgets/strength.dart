@@ -1,50 +1,98 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class StrengthWidget extends StatelessWidget {
   const StrengthWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final responsiveData = ResponsiveBreakpoints.of(context);
     return Container(
-      height: .3.sh,
-      //  color: Colors.red,
+      height: responsiveData.isDesktop ? .3.sh : .4.sh,
+      // color: Colors.red,
       padding: EdgeInsets.symmetric(horizontal: .1.sw),
-      child: Row(
-        children: [
-          _strengthCard(Icons.leaderboard, 'Leadership',
-              'Experienced in managing small teams, successfully driving business needs, and consistently delivering projects on time.'),
-          _strengthCard(Icons.zoom_in, 'Design Patterns',
-              'blah blah asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas'),
-          _strengthCard(Icons.u_turn_left, 'Core Concepts',
-              'blah blah asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas'),
-          _strengthCard(Icons.face, 'Problem Solving',
-              'blah blah asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas'),
-        ],
-      ),
+      child: responsiveData.isDesktop
+          ? Row(
+              children: [
+                _strengthCard(responsiveData, Icons.leaderboard, 'Leadership',
+                    'Experienced in managing small teams, successfully driving business needs, and consistently delivering projects on time.'),
+                _strengthCard(
+                    responsiveData,
+                    Icons.design_services,
+                    'Design Patterns',
+                    'Created applications with MVP, MVVM patterns and CLEAN architecture.'),
+                _strengthCard(
+                    responsiveData,
+                    Icons.gesture_rounded,
+                    'Core Concepts',
+                    'Understanding the core concepts fundamental concepts like application lifecycle, design principals and software methodologies.'),
+                _strengthCard(
+                    responsiveData,
+                    Icons.lightbulb_outlined,
+                    'Problem Solving',
+                    'Experienced in resolving business issues that arise due to surges in demand, ensuring effective and timely solutions.'),
+              ],
+            )
+          : Column(
+              children: [
+                Row(
+                  children: [
+                    _strengthCard(
+                        responsiveData,
+                        Icons.leaderboard,
+                        'Leadership',
+                        'Experienced in managing small teams, successfully driving business needs, and consistently delivering projects on time.'),
+                    _strengthCard(
+                        responsiveData,
+                        Icons.design_services,
+                        'Design Patterns',
+                        'Created applications with MVP, MVVM patterns and CLEAN architecture.'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _strengthCard(
+                        responsiveData,
+                        Icons.gesture_rounded,
+                        'Core Concepts',
+                        'Understanding of core and fundamental concepts like application lifecycle, design principals and software methodologies.'),
+                    _strengthCard(
+                        responsiveData,
+                        Icons.lightbulb_outlined,
+                        'Problem Solving',
+                        'Experienced in resolving business issues that arise due to surges in demand, ensuring effective and timely solutions.'),
+                  ],
+                ),
+              ],
+            ),
     );
   }
 
   Widget _strengthCard(
+    ResponsiveBreakpointsData responsiveData,
     IconData icon,
     String title,
     String subtitle,
   ) {
     return Expanded(
-        child: Container(
+        child: SizedBox(
+      width: 100,
+      height: responsiveData.isDesktop ? .26.sh : .2.sh,
       // color: Colors.pink,
       child: Column(
         children: [
           Expanded(
-            flex: 2,
+            flex: 25,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
               width: double.infinity,
-              // color: Colors.pink,
+              //color: Colors.pink,
               child: Row(
                 children: [
                   Container(
-                    //  color: Colors.yellow,
+                    //   color: Colors.yellow,
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Icon(
@@ -58,12 +106,26 @@ class StrengthWidget extends StatelessWidget {
                     width: ScreenUtil().setWidth(10),
                   ),
                   Expanded(
-                    child: Container(
-                      //    color: Colors.green,
-                      child: Text(
-                        title,
-                        style: TextStyle(
-                            color: Colors.white, fontSize: .03.sh, height: 1),
+                    child: SizedBox(
+                      height: double.infinity,
+                      width: double.infinity,
+                      // color: Colors.teal,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: AutoSizeText(
+                          title,
+                          maxLines: 2,
+                          minFontSize: responsiveData.isDesktop
+                              ? .025.sh.roundToDouble()
+                              : .02.sh.roundToDouble(),
+                          maxFontSize: .03.sh.roundToDouble(),
+                          stepGranularity: .1,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            //  fontSize: .03.sh,
+                            height: 1,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -71,14 +133,20 @@ class StrengthWidget extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: .005.sh,
+          ),
           Expanded(
-            flex: 7,
+            flex: 75,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
               width: double.infinity,
               //  color: Colors.grey,
-              child: Text(
+              child: AutoSizeText(
                 subtitle,
+                minFontSize: .01.sh.roundToDouble(),
+                maxFontSize: .18.sh.roundToDouble(),
+                stepGranularity: .1,
                 style: const TextStyle(color: Colors.grey),
               ),
             ),
