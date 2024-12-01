@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -16,72 +17,67 @@ class _HighlightsWidgetState extends State<HighlightsWidget> {
   Widget build(BuildContext context) {
     final responsiveData = ResponsiveBreakpoints.of(context);
 
-    final TextStyle numberStyle = TextStyle(
-        //  fontSize: ResponsiveBreakpoints.of(context).isMobile ? 60.sp : 46.sp,
-        fontSize: ResponsiveBreakpoints.of(context).isMobile ? .04.sh : .06.sh,
-        color: Colors.lightGreenAccent);
+    final items = [
+      _card('6', 'Clients'),
+      _card('10+', 'Projects'),
+      _card('4+', 'Years Of\nExperience')
+    ];
+
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: .1.sw),
+      height: _screenUtil.setHeight(200),
+      width: double.infinity,
+      child: CarouselSlider(
+        items: items,
+        options: CarouselOptions(
+            autoPlay: true,
+            viewportFraction: responsiveData.isTablet
+                ? .7
+                : responsiveData.isMobile
+                    ? 1
+                    : .35,
+            disableCenter: true),
+      ),
+    );
+  }
+
+  Widget _card(String number, String title) {
+    final TextStyle numberStyle =
+        TextStyle(fontSize: .05.sh, color: Colors.lightGreenAccent);
 
     final TextStyle titleStyle = TextStyle(
       color: Colors.grey.shade300,
-      //  fontSize: ResponsiveBreakpoints.of(context).isMobile ? 26.sp : 16.sp,
-      fontSize: ResponsiveBreakpoints.of(context).isMobile ? .015.sh : .02.sh,
+      fontSize: .02.sh,
       fontWeight: FontWeight.w500,
-
       height: 1,
     );
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: .1.sw),
-      //  padding: EdgeInsets.symmetric(horizontal: _screenUtil.setWidth(20)),
-      height: _screenUtil.setHeight(300),
-      decoration: const BoxDecoration(
-          //  color: Colors.green,
-          //   borderRadius: BorderRadius.circular(50),
-          ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            //   color: Colors.amber,
-            width: _screenUtil.setWidth(200),
-            child: Column(
-              children: [
-                Text(
-                  'Clients',
-                  style: titleStyle,
-                ),
-                Text('5', style: numberStyle),
-              ],
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+      ),
+      margin: EdgeInsets.symmetric(horizontal: .03.sw),
+      // width: .2.sw,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        color: Colors.grey.withOpacity(.25),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              number,
+              style: numberStyle,
             ),
-          ),
-          SizedBox(
-            //   color: Colors.amber,
-            width: _screenUtil.setWidth(200),
-            child: Column(
-              children: [
-                Text('Projects', style: titleStyle),
-                Text(
-                  '10+',
-                  style: numberStyle,
-                  maxLines: 1,
-                ),
-              ],
+            const SizedBox(
+              width: 10,
             ),
-          ),
-          SizedBox(
-            //   color: Colors.amber,
-            width: _screenUtil.setWidth(200),
-            child: Column(
-              children: [
-                Text(
-                  'Experience',
-                  style: titleStyle,
-                  maxLines: 1,
-                ),
-                Text('3+', style: numberStyle),
-              ],
-            ),
-          ),
-        ],
+            Text(
+              title,
+              style: titleStyle,
+            )
+          ],
+        ),
       ),
     );
   }

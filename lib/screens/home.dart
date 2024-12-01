@@ -1,4 +1,5 @@
 import 'package:amit_aditaya_portfolio/widgets/hero.dart';
+import 'package:amit_aditaya_portfolio/widgets/highlights.dart';
 import 'package:amit_aditaya_portfolio/widgets/strength.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,16 +39,32 @@ class _HomePageState extends State<HomePage> {
                   'Strengths 💪🏋🏻',
                   style: TextStyle(
                       color: Colors.lightGreenAccent,
-                      fontSize: .025.sh,
+                      fontSize: .03.sh,
                       fontWeight: FontWeight.w700),
                 ),
               ),
             ),
-            SizedBox(height: .01.sh),
+            // /SizedBox(height: .01.sh),
             const StrengthWidget(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: .1.sw),
+                padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
+                child: Text(
+                  'Highlights 💡',
+                  style: TextStyle(
+                      color: Colors.lightGreenAccent,
+                      fontSize: .03.sh,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
             SizedBox(
-              height: 1.sh,
-            )
+              height: .03.sh,
+            ),
+            const HighlightsWidget(),
+            SizedBox(height: .01.sh),
           ],
         ),
       ),
