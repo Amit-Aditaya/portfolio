@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,6 +14,7 @@ class Portfolio extends StatelessWidget {
       child: Column(
         children: [
           _portfolioCard(
+              context: context,
               logoUrl: 'images/eatos_logo_2.png',
               title: 'EatOS - Kiosk',
               buttonText: 'Android Link',
@@ -43,6 +45,7 @@ class Portfolio extends StatelessWidget {
                 ],
               )),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/eatos_logo_2.png',
               title: 'EatOS - POS',
               buttonText: 'iOS Link',
@@ -53,6 +56,7 @@ class Portfolio extends StatelessWidget {
               image: const Image(image: AssetImage('images/pos.png')),
               imageOnRight: true),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/eatos_logo_2.png',
               title: 'EatOS - Kitchen Display System',
               description:
@@ -62,6 +66,7 @@ class Portfolio extends StatelessWidget {
               urlLink:
                   'https://play.google.com/store/apps/details?id=com.poslabs.eoskds'),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/eatos_logo_2.png',
               imageOnRight: true,
               title: 'EatOS - Point Of Purchase',
@@ -72,6 +77,7 @@ class Portfolio extends StatelessWidget {
               urlLink:
                   'https://play.google.com/store/apps/details?id=com.eatos.pos&hl=en'),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/eatos_logo_2.png',
               isLinkHidden: true,
               title: 'EatOS - Customer Facing Display',
@@ -81,6 +87,7 @@ class Portfolio extends StatelessWidget {
               buttonText: 'Hidden',
               urlLink: ''),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/babuland_logo.png',
               title: 'Babuland',
               imageOnRight: true,
@@ -90,6 +97,7 @@ class Portfolio extends StatelessWidget {
               buttonText: 'iOS Link',
               urlLink: 'https://apps.apple.com/us/app/babuland/id1644669214'),
           _portfolioCard(
+              context: context,
               logoUrl: 'images/babuland_logo.png',
               isLinkHidden: true,
               title: 'Babuland Host',
@@ -111,6 +119,7 @@ class Portfolio extends StatelessWidget {
   }
 
   Widget _portfolioCard({
+    required BuildContext context,
     required String title,
     required String description,
     required Widget image,
@@ -121,6 +130,7 @@ class Portfolio extends StatelessWidget {
     bool? isLinkHidden,
   }) {
     final ScreenUtil screenUtil = ScreenUtil();
+    final responsiveData = ResponsiveBreakpoints.of(context);
     return SizedBox(
       height: .45.sh,
       //color: Colors.pink,
@@ -138,28 +148,32 @@ class Portfolio extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            fit: BoxFit.fitHeight,
-                            logoUrl,
-                            height: .05.sh,
-                            width: .05.sh,
-                            //image: AssetImage(logoUrl),
+                      if (responsiveData.isMobile == false) ...[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              fit: BoxFit.fitHeight,
+                              logoUrl,
+                              height: .05.sh,
+                              width: .05.sh,
+                              //image: AssetImage(logoUrl),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        title,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: .03.sh,
-                            fontWeight: FontWeight.w700),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                      ],
+                      Expanded(
+                        child: Text(
+                          title,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: .03.sh,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ],
                   ),

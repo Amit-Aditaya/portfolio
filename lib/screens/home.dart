@@ -1,3 +1,4 @@
+import 'package:amit_aditaya_portfolio/widgets/contact.dart';
 import 'package:amit_aditaya_portfolio/widgets/hero.dart';
 import 'package:amit_aditaya_portfolio/widgets/highlights.dart';
 import 'package:amit_aditaya_portfolio/widgets/portfolio.dart';
@@ -71,12 +72,39 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.symmetric(horizontal: .1.sw),
                 padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
                 child: Text(
-                  '👩🏻‍💻 Projects',
+                  '👩🏻‍💻 Best Projects',
                   style: headerStyle,
                 ),
               ),
             ),
             const Portfolio(),
+            SizedBox(height: .06.sh),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: .1.sw),
+                padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
+                child: Text(
+                  '📞 Contact Me',
+                  style: headerStyle,
+                ),
+              ),
+            ),
+            SizedBox(height: .03.sh),
+            const Contact(),
+            SizedBox(height: .03.sh),
+            Align(
+              //   alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: .1.sw),
+                padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
+                child: Text(
+                  'Copyright (c) 2024 Amit Aditaya, All rights reserved',
+                  style: headerStyle.copyWith(
+                      color: Colors.grey, fontSize: .015.sh),
+                ),
+              ),
+            ),
             SizedBox(height: .05.sh),
           ],
         ),

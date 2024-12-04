@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeroWidget extends StatelessWidget {
   HeroWidget({super.key});
@@ -77,19 +78,28 @@ class HeroWidget extends StatelessWidget {
                       SizedBox(
                         height: _screenUtil.setHeight(30),
                       ),
-                      Container(
-                        height: _screenUtil.setHeight(100),
-                        width: _screenUtil.setHeight(300),
-                        decoration: BoxDecoration(
-                            color: Colors.lightGreenAccent,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Center(
-                          child: Text(
-                            'Linkedin',
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: .02.sh,
-                                fontWeight: FontWeight.w600),
+                      InkWell(
+                        onTap: () async {
+                          final Uri url = Uri.parse(
+                              'https://www.linkedin.com/in/amit-aditaya/');
+                          if (!await launchUrl(url)) {
+                            throw Exception('Could not launch $url');
+                          }
+                        },
+                        child: Container(
+                          height: _screenUtil.setHeight(100),
+                          width: _screenUtil.setHeight(300),
+                          decoration: BoxDecoration(
+                              color: Colors.lightGreenAccent,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Text(
+                              'Linkedin',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: .02.sh,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ),
                       ),
