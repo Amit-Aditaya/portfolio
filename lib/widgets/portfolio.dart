@@ -15,7 +15,7 @@ class Portfolio extends StatelessWidget {
         children: [
           _portfolioCard(
               context: context,
-              logoUrl: 'images/eatos_logo_2.png',
+              logoUrl: 'assets/images/eatos_logo_2.png',
               title: 'EatOS - Kiosk',
               buttonText: 'Android Link',
               urlLink:
@@ -30,7 +30,7 @@ class Portfolio extends StatelessWidget {
                     left: -.1.sw,
                     bottom: 0,
                     child: const Image(
-                      image: AssetImage('images/kiosk_1.png'),
+                      image: AssetImage('assets/images/kiosk_1.png'),
                     ),
                   ),
                   Positioned(
@@ -39,71 +39,73 @@ class Portfolio extends StatelessWidget {
                     left: -.1.sw,
                     bottom: -.1.sh,
                     child: const Image(
-                      image: AssetImage('images/kiosk_2.png'),
+                      image: AssetImage('assets/images/kiosk_2.png'),
                     ),
                   ),
                 ],
               )),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/eatos_logo_2.png',
+              logoUrl: 'assets/images/eatos_logo_2.png',
               title: 'EatOS - POS',
               buttonText: 'iOS Link',
               urlLink:
                   'https://apps.apple.com/us/app/restaurant-point-of-sale-eatos/id1478907136',
               description:
                   'The eatOS Point of Sale (POS) system is a comprehensive solution tailored to optimize restaurant operations. It offers an intuitive interface for seamless order management, supports multiple payment methods, and integrates with other eatOS tools like self-service kiosks and kitchen display systems. Designed for flexibility, the POS is suitable for both countertop and mobile use, allowing for efficient tableside ordering and payment processing. It also features robust reporting and analytics, helping restaurants track sales, manage inventory, and improve decision-making.',
-              image: const Image(image: AssetImage('images/pos.png')),
+              image: const Image(image: AssetImage('assets/images/pos.png')),
               imageOnRight: true),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/eatos_logo_2.png',
+              logoUrl: 'assets/images/eatos_logo_2.png',
               title: 'EatOS - Kitchen Display System',
               description:
                   'The eatOS Kitchen Display System (KDS) is a digital solution that streamlines kitchen operations by replacing traditional paper tickets with interactive displays. Orders placed through the eatOS POS or kiosks are instantly routed to the KDS, ensuring accuracy and reducing delays. The system organizes orders by priority, tracks preparation times, and provides real-time updates, helping kitchen staff maintain efficiency during peak hours. It supports multiple screen setups and is customizable to match various restaurant workflows, ensuring seamless communication between front-of-house and kitchen teams.',
-              image: const Image(image: AssetImage('images/kds.png')),
+              image: const Image(image: AssetImage('assets/images/kds.png')),
               buttonText: 'Android Link',
               urlLink:
                   'https://play.google.com/store/apps/details?id=com.poslabs.eoskds'),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/eatos_logo_2.png',
+              logoUrl: 'assets/images/eatos_logo_2.png',
               imageOnRight: true,
               title: 'EatOS - Point Of Purchase',
               description:
                   'The eatOS Point of Purchase (POP) system is designed to optimize customer interactions at the point of sale, enhancing the purchasing experience. It integrates seamlessly with the eatOS ecosystem, including kiosks, POS, and mobile devices, offering flexibility for payments and upselling opportunities. The POP system is equipped with features like promotional displays, loyalty program integration, and customized receipts, enabling restaurants to increase revenue while building stronger customer relationships.',
-              image: const Image(image: AssetImage('images/pop.png')),
+              image: const Image(image: AssetImage('assets/images/pop.png')),
               buttonText: 'Android Link',
               urlLink:
                   'https://play.google.com/store/apps/details?id=com.eatos.pos&hl=en'),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/eatos_logo_2.png',
+              logoUrl: 'assets/images/eatos_logo_2.png',
               isLinkHidden: true,
               title: 'EatOS - Customer Facing Display',
               description:
                   'The Customer-Facing Display (CFD) from eatOS is designed to enhance transparency and customer interaction during transactions. It presents essential order details, pricing, and promotions directly to customers on a secondary screen, fostering trust and engagement. Additionally, the CFD can display upselling opportunities, helping businesses increase revenue. Its sleek design and seamless integration with eatOS POS systems make it an invaluable tool for modern restaurants aiming to improve customer satisfaction and streamline operations',
-              image: const Image(image: AssetImage('images/cfd.png')),
+              image: const Image(image: AssetImage('assets/images/cfd.png')),
               buttonText: 'Hidden',
               urlLink: ''),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/babuland_logo.png',
+              logoUrl: 'assets/images/babuland_logo.png',
               title: 'Babuland',
               imageOnRight: true,
               description:
                   'Babuland is the largest indoor playground service in Bangladesh, offering a safe and engaging environment for children to play, learn, and grow. It is designed as a haven where kids can create cherished memories in a space prioritizing hygiene and care. The Babuland app provides access to all services, along with exclusive offers, discounts, and exciting features to enhance the overall experience.',
-              image: const Image(image: AssetImage('images/babuland.png')),
+              image:
+                  const Image(image: AssetImage('assets/images/babuland.png')),
               buttonText: 'iOS Link',
               urlLink: 'https://apps.apple.com/us/app/babuland/id1644669214'),
           _portfolioCard(
               context: context,
-              logoUrl: 'images/babuland_logo.png',
+              logoUrl: 'assets/images/babuland_logo.png',
               isLinkHidden: true,
               title: 'Babuland Host',
               description:
                   'The Babuland Host app is designed to complement the main Babuland application, streamlining operations and enhancing user convenience. It enables seamless scanning and tracking of tickets purchased through the primary app, reducing customer wait times and ensuring quick entry into branches. Additionally, the app provides critical business analytics, offering valuable insights to improve management efficiency while elevating the overall customer experience.',
-              image: const Image(image: AssetImage('images/babuland_host.png')),
+              image: const Image(
+                  image: AssetImage('assets/images/babuland_host.png')),
               buttonText: 'Hidden',
               urlLink: '')
         ],
