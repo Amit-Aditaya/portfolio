@@ -1,5 +1,6 @@
 import 'package:amit_aditaya_portfolio/widgets/hero.dart';
 import 'package:amit_aditaya_portfolio/widgets/highlights.dart';
+import 'package:amit_aditaya_portfolio/widgets/portfolio.dart';
 import 'package:amit_aditaya_portfolio/widgets/strength.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,11 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  TextStyle headerStyle = TextStyle(
+      color: Colors.lightGreenAccent,
+      fontSize: .03.sh,
+      fontWeight: FontWeight.w700);
+
   @override
   Widget build(BuildContext context) {
     final responsiveData = ResponsiveBreakpoints.of(context);
@@ -36,15 +42,12 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.symmetric(horizontal: .1.sw),
                 padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
                 child: Text(
-                  'Strengths 💪🏋🏻',
-                  style: TextStyle(
-                      color: Colors.lightGreenAccent,
-                      fontSize: .03.sh,
-                      fontWeight: FontWeight.w700),
+                  '💪 Strengths',
+                  style: headerStyle,
                 ),
               ),
             ),
-            // /SizedBox(height: .01.sh),
+            SizedBox(height: .01.sh),
             const StrengthWidget(),
             Align(
               alignment: Alignment.centerLeft,
@@ -52,19 +55,29 @@ class _HomePageState extends State<HomePage> {
                 margin: EdgeInsets.symmetric(horizontal: .1.sw),
                 padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
                 child: Text(
-                  'Highlights 💡',
-                  style: TextStyle(
-                      color: Colors.lightGreenAccent,
-                      fontSize: .03.sh,
-                      fontWeight: FontWeight.w700),
+                  '✨ Highlights ',
+                  style: headerStyle,
                 ),
               ),
             ),
             SizedBox(
-              height: .03.sh,
+              height: .06.sh,
             ),
             const HighlightsWidget(),
-            SizedBox(height: .01.sh),
+            SizedBox(height: .06.sh),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: .1.sw),
+                padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
+                child: Text(
+                  '👩🏻‍💻 Projects',
+                  style: headerStyle,
+                ),
+              ),
+            ),
+            const Portfolio(),
+            SizedBox(height: .05.sh),
           ],
         ),
       ),
