@@ -1,3 +1,4 @@
+import 'package:amit_aditaya_portfolio/utils/theme/app_colors.dart';
 import 'package:amit_aditaya_portfolio/widgets/contact.dart';
 import 'package:amit_aditaya_portfolio/widgets/hero.dart';
 import 'package:amit_aditaya_portfolio/widgets/highlights.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final responsiveData = ResponsiveBreakpoints.of(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(AppColors.appBlack),
       body: SingleChildScrollView(
         child: Column(
           children: [
