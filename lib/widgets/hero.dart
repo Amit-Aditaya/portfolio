@@ -12,7 +12,7 @@ class HeroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final responsiveData = ResponsiveBreakpoints.of(context);
     return Container(
-      // /  color: Colors.pink,
+      //color: Colors.pink,
       margin: EdgeInsets.symmetric(horizontal: .1.sw),
       height: ResponsiveBreakpoints.of(context).isMobile
           ? 0.5.sh
@@ -44,7 +44,7 @@ class HeroWidget extends StatelessWidget {
                         height: _screenUtil.setHeight(15),
                       ),
                       Text(
-                        'Flutter Engineer',
+                        'Mobile Application Developer',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
@@ -55,23 +55,26 @@ class HeroWidget extends StatelessWidget {
                         height: _screenUtil.setHeight(30),
                       ),
                       Text(
-                        'Hello, I am a Senior Flutter Engineer based in Dhaka, Bangladesh',
+                        'Hello, I am a Mobile Application Developer with a passion for crafting exceptional apps in Flutter and native Android.',
                         style: TextStyle(
                             color: Colors.grey.shade300, fontSize: .02.sh),
                       ),
                       Wrap(
                         children: [
                           Text(
-                            'Looking for a Flutter Specialist? ',
+                            'If you’re looking for a specialist to bring your vision to life, ',
                             style: TextStyle(
                                 color: Colors.grey.shade300, fontSize: .02.sh),
                           ),
-                          Text(
-                            'Let\'s Connect',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: .02.sh),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              'Let\'s Connect',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: .02.sh),
+                            ),
                           ),
                         ],
                       ),
@@ -109,6 +112,8 @@ class HeroWidget extends StatelessWidget {
               ),
             ),
           ),
+          if (responsiveData.isDesktop)
+            const ResponsiveRowColumnItem(child: Spacer()),
           responsiveData.isMobile
               ? const ResponsiveRowColumnItem(
                   child: SizedBox(),

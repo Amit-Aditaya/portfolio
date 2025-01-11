@@ -123,6 +123,7 @@ class StrengthWidget extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.white,
                             //  fontSize: .03.sh,
+                            fontWeight: FontWeight.w700,
                             height: 1,
                           ),
                         ),
@@ -147,7 +148,8 @@ class StrengthWidget extends StatelessWidget {
                 minFontSize: .01.sh.roundToDouble(),
                 maxFontSize: .18.sh.roundToDouble(),
                 stepGranularity: .1,
-                style: const TextStyle(color: Colors.grey),
+                style: TextStyle(
+                    color: Colors.grey.shade400, fontWeight: FontWeight.w600),
               ),
             ),
           ),
