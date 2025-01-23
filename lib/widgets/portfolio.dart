@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:scroll_loop_auto_scroll/scroll_loop_auto_scroll.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,98 +18,122 @@ class _PortfolioState extends State<Portfolio> {
 
   @override
   Widget build(BuildContext context) {
+    final responsiveData = ResponsiveBreakpoints.of(context);
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: .1.sw),
+      margin: EdgeInsets.symmetric(
+          horizontal: responsiveData.isMobile ? .001 : .1.sw),
       child: Column(
         children: [
           SizedBox(
-            height: .05.sh,
+            height: .025.sh,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    _isCommercial = true;
-                    _isPersonal = false;
-                    setState(() {});
-                  },
-                  child: Container(
-                    height: .06.sh,
-                    decoration: BoxDecoration(
-                        border: _isPersonal
-                            ? Border.all(
-                                width: 2, color: Colors.lightGreenAccent)
-                            : null,
-                        borderRadius: BorderRadius.circular(50),
-                        //color: Colors.lightGreenAccent,
-                        gradient: _isCommercial == true
-                            ? const LinearGradient(colors: [
-                                Color(0xff56ab2f),
-                                Color(0xffa8e063),
-                              ])
-                            : null),
-                    child: Center(
-                      child: Text(
-                        "Commercial",
-                        style: TextStyle(
-                            color: _isCommercial
-                                ? Colors.black
-                                : Colors.lightGreenAccent,
-                            fontSize: .02.sh,
-                            fontWeight: FontWeight.w900),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: .02.sh,
-              ),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    _isPersonal = true;
-                    _isCommercial = false;
-                    setState(() {});
-                  },
-                  child: Container(
-                    height: .06.sh,
-                    decoration: BoxDecoration(
-                        border: _isCommercial
-                            ? Border.all(
-                                width: 2, color: Colors.lightGreenAccent)
-                            : null,
-                        borderRadius: BorderRadius.circular(50),
-                        //color: Colors.lightGreenAccent,
-                        gradient: _isPersonal == true
-                            ? const LinearGradient(colors: [
-                                Color(0xff56ab2f),
-                                Color(0xffa8e063),
-                              ])
-                            : null),
-                    child: Center(
-                      child: Text(
-                        "Personal",
-                        style: TextStyle(
-                            color: _isPersonal
-                                ? Colors.black
-                                : Colors.lightGreenAccent,
-                            fontSize: .02.sh,
-                            fontWeight: FontWeight.w900),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          LiteRollingSwitch(
+            width: 145,
+            onTap: (v) {},
+            onDoubleTap: () {},
+            onSwipe: () {},
+            value: true,
+            textOn: 'Commercial',
+            textOff: 'Personal',
+            colorOn: Colors.greenAccent,
+            colorOff: Colors.black,
+            iconOn: Icons.business_outlined,
+            iconOff: Icons.favorite,
+            textOnColor: Colors.white,
+            textSize: 16.0,
+            onChanged: (bool state) {
+              setState(() {
+                _isCommercial = !_isCommercial;
+                _isPersonal = !_isPersonal;
+              });
+            },
           ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Expanded(
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           _isCommercial = true;
+          //           _isPersonal = false;
+          //           setState(() {});
+          //         },
+          //         child: Container(
+          //           height: .06.sh,
+          //           decoration: BoxDecoration(
+          //               border: _isPersonal
+          //                   ? Border.all(
+          //                       width: 2, color: Colors.lightGreenAccent)
+          //                   : null,
+          //               borderRadius: BorderRadius.circular(50),
+          //               //color: Colors.lightGreenAccent,
+          //               gradient: _isCommercial == true
+          //                   ? const LinearGradient(colors: [
+          //                       Color(0xff56ab2f),
+          //                       Color(0xffa8e063),
+          //                     ])
+          //                   : null),
+          //           child: Center(
+          //             child: Text(
+          //               "Commercial",
+          //               style: TextStyle(
+          //                   color: _isCommercial
+          //                       ? Colors.black
+          //                       : Colors.lightGreenAccent,
+          //                   fontSize: .02.sh,
+          //                   fontWeight: FontWeight.w900),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       width: .02.sh,
+          //     ),
+          //     Expanded(
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           _isPersonal = true;
+          //           _isCommercial = false;
+          //           setState(() {});
+          //         },
+          //         child: Container(
+          //           height: .06.sh,
+          //           decoration: BoxDecoration(
+          //               border: _isCommercial
+          //                   ? Border.all(
+          //                       width: 2, color: Colors.lightGreenAccent)
+          //                   : null,
+          //               borderRadius: BorderRadius.circular(50),
+          //               //color: Colors.lightGreenAccent,
+          //               gradient: _isPersonal == true
+          //                   ? const LinearGradient(colors: [
+          //                       Color(0xff56ab2f),
+          //                       Color(0xffa8e063),
+          //                     ])
+          //                   : null),
+          //           child: Center(
+          //             child: Text(
+          //               "Personal",
+          //               style: TextStyle(
+          //                   color: _isPersonal
+          //                       ? Colors.black
+          //                       : Colors.lightGreenAccent,
+          //                   fontSize: .02.sh,
+          //                   fontWeight: FontWeight.w900),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           SizedBox(
-            height: .05.sh,
+            height: .025.sh,
           ),
           if (_isPersonal) ...[
             _portfolioCard(
+              titleColor: Colors.green,
               context: context,
               title: "Memory Game",
               description:
@@ -118,6 +143,7 @@ class _PortfolioState extends State<Portfolio> {
               urlLink: "",
             ),
             _portfolioCard(
+              titleColor: Colors.green,
               imageOnRight: true,
               context: context,
               title: "Crypto Currency Application",
@@ -129,6 +155,7 @@ class _PortfolioState extends State<Portfolio> {
             )
           ] else ...[
             _portfolioCard(
+                titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 title: 'EatOS - Kiosk',
@@ -160,6 +187,7 @@ class _PortfolioState extends State<Portfolio> {
                   ],
                 )),
             _portfolioCard(
+                titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 title: 'EatOS - POS',
@@ -171,6 +199,7 @@ class _PortfolioState extends State<Portfolio> {
                 image: const Image(image: AssetImage('assets/images/pos.png')),
                 imageOnRight: true),
             _portfolioCard(
+                titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 title: 'EatOS - Kitchen Display System',
@@ -181,6 +210,7 @@ class _PortfolioState extends State<Portfolio> {
                 urlLink:
                     'https://play.google.com/store/apps/details?id=com.poslabs.eoskds'),
             _portfolioCard(
+                titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 imageOnRight: true,
@@ -192,6 +222,7 @@ class _PortfolioState extends State<Portfolio> {
                 urlLink:
                     'https://play.google.com/store/apps/details?id=com.eatos.pos&hl=en'),
             _portfolioCard(
+                titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 isLinkHidden: true,
@@ -202,6 +233,7 @@ class _PortfolioState extends State<Portfolio> {
                 buttonText: 'Hidden',
                 urlLink: ''),
             _portfolioCard(
+                titleColor: Colors.orange,
                 context: context,
                 logoUrl: 'assets/images/babuland_logo.png',
                 title: 'Babuland',
@@ -213,6 +245,7 @@ class _PortfolioState extends State<Portfolio> {
                 buttonText: 'iOS Link',
                 urlLink: 'https://apps.apple.com/us/app/babuland/id1644669214'),
             _portfolioCard(
+                titleColor: Colors.orange,
                 context: context,
                 logoUrl: 'assets/images/babuland_logo.png',
                 isLinkHidden: true,
@@ -243,6 +276,7 @@ class _PortfolioState extends State<Portfolio> {
     required Widget image,
     required String buttonText,
     required String urlLink,
+    Color? titleColor,
     String? logoUrl,
     bool? imageOnRight,
     bool? isLinkHidden,
@@ -267,7 +301,7 @@ class _PortfolioState extends State<Portfolio> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       if (responsiveData.isMobile == false) ...[
-                        if (logoUrl != null)
+                        if (logoUrl != null) ...[
                           Align(
                             alignment: Alignment.centerLeft,
                             child: ClipRRect(
@@ -281,15 +315,16 @@ class _PortfolioState extends State<Portfolio> {
                               ),
                             ),
                           ),
-                        const SizedBox(
-                          width: 15,
-                        ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                        ]
                       ],
                       Expanded(
                         child: Text(
                           title,
                           style: TextStyle(
-                              color: Colors.white,
+                              color: titleColor ?? Colors.white,
                               fontSize: .03.sh,
                               fontWeight: FontWeight.w700),
                         ),
@@ -314,7 +349,7 @@ class _PortfolioState extends State<Portfolio> {
                       child: Text(
                         description,
                         style: TextStyle(
-                            color: Colors.grey.shade400,
+                            color: Colors.grey,
                             fontSize: .017.sh,
                             fontWeight: FontWeight.w400),
                       ),

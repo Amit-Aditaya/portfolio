@@ -13,38 +13,44 @@ class Contact extends StatelessWidget {
           horizontal: responsiveData.isMobile ? .05.sw : .1.sw),
       // /height: 0.2.sh,
       //color: Colors.red,
-      child: responsiveData.isMobile || responsiveData.isTablet
+      child: responsiveData.isMobile
           ? _mobileView()
-          : const Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _ContactCard(
-                  icon: Icons.location_on,
-                  label: "ADDRESS",
-                  details: "Bashundhara R/A\nDhaka, 1229",
+          : responsiveData.isTablet
+              ? _tabView()
+              : const Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _ContactCard(
+                      iconColor: Colors.blue,
+                      icon: Icons.location_on,
+                      label: "ADDRESS",
+                      details: "Bashundhara R/A\nDhaka, 1229",
+                    ),
+                    _ContactCard(
+                      iconColor: Colors.red,
+                      icon: Icons.phone,
+                      label: "PHONE",
+                      details: "+8801911817331",
+                    ),
+                    _ContactCard(
+                      iconColor: Colors.pink,
+                      icon: Icons.email,
+                      label: "EMAIL",
+                      details: "amit.aditaya99@gmail.com",
+                    ),
+                    _ContactCard(
+                      iconColor: Colors.green,
+                      icon: Icons.contact_phone_outlined,
+                      label: "WHATSAPP",
+                      details: "+8801911817331",
+                    ),
+                  ],
                 ),
-                _ContactCard(
-                  icon: Icons.phone,
-                  label: "PHONE",
-                  details: "+8801911817331",
-                ),
-                _ContactCard(
-                  icon: Icons.email,
-                  label: "EMAIL",
-                  details: "amit.aditaya99@gmail.com",
-                ),
-                _ContactCard(
-                  icon: Icons.contact_phone_outlined,
-                  label: "WHATSAPP",
-                  details: "+8801911817331",
-                ),
-              ],
-            ),
     );
   }
 
-  Widget _mobileView() {
+  Widget _tabView() {
     return const Column(
       children: [
         Row(
@@ -52,11 +58,13 @@ class Contact extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _ContactCard(
+              iconColor: Colors.blue,
               icon: Icons.location_on,
               label: "ADDRESS",
               details: "Bashundhara R/A,Dhaka, 1229",
             ),
             _ContactCard(
+              iconColor: Colors.red,
               icon: Icons.phone,
               label: "PHONE",
               details: "+8801911817331",
@@ -68,16 +76,49 @@ class Contact extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _ContactCard(
+              iconColor: Colors.pink,
               icon: Icons.email,
               label: "EMAIL",
               details: "amit.aditaya99@gmail.com",
             ),
             _ContactCard(
+              iconColor: Colors.green,
               icon: Icons.contact_phone_outlined,
               label: "WHATSAPP",
               details: "+8801911817331",
             ),
           ],
+        ),
+      ],
+    );
+  }
+
+  _mobileView() {
+    return const Column(
+      children: [
+        _ContactCard(
+          iconColor: Colors.blue,
+          icon: Icons.location_on,
+          label: "ADDRESS",
+          details: "Bashundhara R/A,Dhaka, 1229",
+        ),
+        _ContactCard(
+          iconColor: Colors.red,
+          icon: Icons.phone,
+          label: "PHONE",
+          details: "+8801911817331",
+        ),
+        _ContactCard(
+          iconColor: Colors.pink,
+          icon: Icons.email,
+          label: "EMAIL",
+          details: "amit.aditaya99@gmail.com",
+        ),
+        _ContactCard(
+          iconColor: Colors.green,
+          icon: Icons.contact_phone_outlined,
+          label: "WHATSAPP",
+          details: "+8801911817331",
         ),
       ],
     );
@@ -88,11 +129,13 @@ class _ContactCard extends StatelessWidget {
   final IconData icon;
   final String label;
   final String details;
+  final Color iconColor;
 
   const _ContactCard({
     required this.icon,
     required this.label,
     required this.details,
+    required this.iconColor,
   });
 
   @override
@@ -101,12 +144,12 @@ class _ContactCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: Colors.lightGreenAccent, size: 32),
+        Icon(icon, color: iconColor, size: 32),
         const SizedBox(height: 8),
         Text(
           label,
           style: const TextStyle(
-            color: Colors.white,
+            color: Colors.blueGrey,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -116,7 +159,7 @@ class _ContactCard extends StatelessWidget {
           maxLines: 2,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Colors.white,
+            color: Colors.grey,
           ),
         ),
         SizedBox(

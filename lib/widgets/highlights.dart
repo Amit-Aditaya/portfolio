@@ -18,13 +18,17 @@ class _HighlightsWidgetState extends State<HighlightsWidget> {
     final responsiveData = ResponsiveBreakpoints.of(context);
 
     final items = [
-      _card('6', 'Clients'),
-      _card('10+', 'Projects'),
-      _card('4+', 'Years Of\nExperience')
+      _card('7', 'Clients', Colors.deepOrange),
+      _card('12+', 'Projects', Colors.deepOrange),
+      _card('4+', 'Years Of\nExperience', Colors.deepOrange)
     ];
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: .1.sw),
+      margin: responsiveData.isDesktop
+          ? EdgeInsets.symmetric(horizontal: .05.sw)
+          : null,
+      // margin: EdgeInsets.symmetric(
+      //     horizontal: responsiveData.isDesktop ? .1.sw : .001.sw),
       height: _screenUtil.setHeight(200),
       width: double.infinity,
       child: CarouselSlider(
@@ -41,12 +45,12 @@ class _HighlightsWidgetState extends State<HighlightsWidget> {
     );
   }
 
-  Widget _card(String number, String title) {
+  Widget _card(String number, String title, Color numberColor) {
     final TextStyle numberStyle =
-        TextStyle(fontSize: .05.sh, color: Colors.lightGreenAccent);
+        TextStyle(fontSize: .05.sh, color: numberColor);
 
     final TextStyle titleStyle = TextStyle(
-      color: Colors.grey.shade300,
+      color: Colors.blueGrey,
       fontSize: .02.sh,
       fontWeight: FontWeight.w500,
       height: 1,
@@ -58,8 +62,8 @@ class _HighlightsWidgetState extends State<HighlightsWidget> {
       margin: EdgeInsets.symmetric(horizontal: .03.sw),
       // width: .2.sw,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25),
-        color: Colors.grey.withOpacity(.25),
+        borderRadius: BorderRadius.circular(50),
+        color: Colors.grey.shade100,
       ),
       child: Center(
         child: Row(

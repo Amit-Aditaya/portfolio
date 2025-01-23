@@ -12,23 +12,31 @@ class StrengthWidget extends StatelessWidget {
     return Container(
       height: responsiveData.isDesktop ? .3.sh : .4.sh,
       // color: Colors.red,
-      padding: EdgeInsets.symmetric(horizontal: .1.sw),
+      padding: EdgeInsets.symmetric(
+          horizontal: responsiveData.isMobile ? .0005.sh : .05.sw),
       child: responsiveData.isDesktop
           ? Row(
               children: [
-                _strengthCard(responsiveData, Icons.leaderboard, 'Leadership',
+                _strengthCard(
+                    Colors.pink,
+                    responsiveData,
+                    Icons.leaderboard,
+                    'Leadership',
                     'Experienced in managing small teams, successfully driving business needs, and consistently delivering projects on time.'),
                 _strengthCard(
+                    Colors.blue,
                     responsiveData,
                     Icons.design_services,
                     'Design Patterns',
                     'Created applications with MVP, MVVM patterns and CLEAN architecture.'),
                 _strengthCard(
+                    Colors.lightGreenAccent,
                     responsiveData,
                     Icons.gesture_rounded,
                     'Core Concepts',
                     'Understanding the core concepts fundamental concepts like application lifecycle, design principals and software methodologies.'),
                 _strengthCard(
+                    Colors.amber,
                     responsiveData,
                     Icons.lightbulb_outlined,
                     'Problem Solving',
@@ -40,11 +48,13 @@ class StrengthWidget extends StatelessWidget {
                 Row(
                   children: [
                     _strengthCard(
+                        Colors.pink,
                         responsiveData,
                         Icons.leaderboard,
                         'Leadership',
                         'Experienced in managing small teams, successfully driving business needs, and consistently delivering projects on time.'),
                     _strengthCard(
+                        Colors.blue,
                         responsiveData,
                         Icons.design_services,
                         'Design Patterns',
@@ -54,11 +64,13 @@ class StrengthWidget extends StatelessWidget {
                 Row(
                   children: [
                     _strengthCard(
+                        Colors.lightGreenAccent,
                         responsiveData,
                         Icons.gesture_rounded,
                         'Core Concepts',
                         'Understanding of core and fundamental concepts like application lifecycle, design principals and software methodologies.'),
                     _strengthCard(
+                        Colors.amber,
                         responsiveData,
                         Icons.lightbulb_outlined,
                         'Problem Solving',
@@ -71,6 +83,7 @@ class StrengthWidget extends StatelessWidget {
   }
 
   Widget _strengthCard(
+    Color iconColor,
     ResponsiveBreakpointsData responsiveData,
     IconData icon,
     String title,
@@ -78,6 +91,7 @@ class StrengthWidget extends StatelessWidget {
   ) {
     return Expanded(
         child: SizedBox(
+      // /  color: Colors.red,
       width: 100,
       height: responsiveData.isDesktop ? .26.sh : .2.sh,
       // color: Colors.pink,
@@ -98,7 +112,7 @@ class StrengthWidget extends StatelessWidget {
                       child: Icon(
                         size: .035.sh,
                         icon,
-                        color: Colors.lightGreenAccent,
+                        color: iconColor,
                       ),
                     ),
                   ),
@@ -121,7 +135,7 @@ class StrengthWidget extends StatelessWidget {
                           maxFontSize: .03.sh.roundToDouble(),
                           stepGranularity: .1,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: Colors.blueGrey,
                             //  fontSize: .03.sh,
                             fontWeight: FontWeight.w700,
                             height: 1,
@@ -148,8 +162,8 @@ class StrengthWidget extends StatelessWidget {
                 minFontSize: .01.sh.roundToDouble(),
                 maxFontSize: .18.sh.roundToDouble(),
                 stepGranularity: .1,
-                style: TextStyle(
-                    color: Colors.grey.shade400, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    color: Colors.grey, fontWeight: FontWeight.w600),
               ),
             ),
           ),
