@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: .01.sh),
             const StrengthWidget(),
+            if (responsiveData.isMobile) SizedBox(height: .03.sh),
             Align(
               alignment: Alignment.centerLeft,
               child: Container(

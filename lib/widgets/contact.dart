@@ -119,6 +119,9 @@ class _ContactCard extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        SizedBox(
+          height: .02.sh,
+        )
       ],
     );
   }
