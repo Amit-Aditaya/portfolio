@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeroWidget extends StatelessWidget {
   HeroWidget({super.key});
@@ -49,13 +50,6 @@ class HeroWidget extends StatelessWidget {
                 fontSize: .025.sh,
                 fontWeight: FontWeight.w700),
           ),
-          // Text(
-          //   "Hello, I am a Mobile Application Developer with a passion for crafting exceptional apps in Flutter and native Android,",
-          //   style: TextStyle(
-          //       color: Colors.grey,
-          //       fontSize: .018.sh,
-          //       fontWeight: FontWeight.w500),
-          // ),
           Text.rich(
             TextSpan(
               text:
@@ -126,26 +120,38 @@ class HeroWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                "assets/images/linkedin.svg",
-                height: .03.sh,
-                width: .03.sh,
+              GestureDetector(
+                onTap: () => launchUrl(
+                    Uri.parse('https://www.linkedin.com/in/amit-aditaya/')),
+                child: SvgPicture.asset(
+                  "assets/images/linkedin.svg",
+                  height: .03.sh,
+                  width: .03.sh,
+                ),
               ),
               SizedBox(
                 width: .02.sw,
               ),
-              SvgPicture.asset(
-                "assets/images/whatsapp.svg",
-                height: .03.sh,
-                width: .03.sh,
+              GestureDetector(
+                onTap: () =>
+                    launchUrl(Uri.parse('https://wa.me/+8801911817331')),
+                child: SvgPicture.asset(
+                  "assets/images/whatsapp.svg",
+                  height: .03.sh,
+                  width: .03.sh,
+                ),
               ),
               SizedBox(
                 width: .02.sw,
               ),
-              SvgPicture.asset(
-                "assets/images/facebook.svg",
-                height: .03.sh,
-                width: .03.sh,
+              GestureDetector(
+                onTap: () => launchUrl(
+                    Uri.parse('https://www.facebook.com/amit.aditaya.5/')),
+                child: SvgPicture.asset(
+                  "assets/images/facebook.svg",
+                  height: .03.sh,
+                  width: .03.sh,
+                ),
               ),
             ],
           )

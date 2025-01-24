@@ -133,29 +133,35 @@ class _PortfolioState extends State<Portfolio> {
           ),
           if (_isPersonal) ...[
             _portfolioCard(
-              titleColor: Colors.green,
+              buttonTextColor: Colors.white,
+              buttonColor: Colors.black,
+              titleColor: Colors.black,
               context: context,
               title: "Memory Game",
               description:
                   "A simple and fun memory game developed in Kotlin for Android devices. The goal is to match all pairs of cards with the least number of moves. Some of the features include :-\n\n • Responsive Gameplay: Smooth animations and intuitive controls. \n • Randomized Cards: A fresh challenge with every restart.\n • Progress Tracking: Displays the number of moves and matched pairs.\n • Restart Option: Quickly reset the game to try again.",
               image: const Image(image: AssetImage('assets/images/memory.png')),
-              buttonText: "Download Link",
-              urlLink: "",
+              buttonText: "Github Link",
+              urlLink: "https://github.com/Amit-Aditaya/Memory_Game",
             ),
             _portfolioCard(
-              titleColor: Colors.green,
+              buttonTextColor: Colors.white,
+              buttonColor: Colors.black,
+              titleColor: Colors.black,
               imageOnRight: true,
               context: context,
               title: "Crypto Currency Application",
               description:
                   "This is a simple cryptocurrency app built using Kotlin and Jetpack Compose with Clean Architecture principles. The app fetches data from the Coin Paprika API and displays the following features:\n\n • Displays a list of cryptocurrencies with their names, symbols, and statuses.\n • Detailed information about a selected cryptocurrency, including tags and team members.\n • Displays the latest Twitter feeds related to the selected cryptocurrency",
               image: const Image(image: AssetImage('assets/images/crypto.png')),
-              buttonText: "Download Link",
-              urlLink: "",
+              buttonText: "Github Link",
+              urlLink: "https://github.com/Amit-Aditaya/Crypto_Currency_App",
             )
           ] else ...[
             _portfolioCard(
                 titleColor: Colors.pink,
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
                 title: 'EatOS - Kiosk',
@@ -187,6 +193,8 @@ class _PortfolioState extends State<Portfolio> {
                   ],
                 )),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.pink,
                 titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
@@ -199,6 +207,8 @@ class _PortfolioState extends State<Portfolio> {
                 image: const Image(image: AssetImage('assets/images/pos.png')),
                 imageOnRight: true),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.pink,
                 titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
@@ -210,6 +220,8 @@ class _PortfolioState extends State<Portfolio> {
                 urlLink:
                     'https://play.google.com/store/apps/details?id=com.poslabs.eoskds'),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.pink,
                 titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
@@ -222,6 +234,8 @@ class _PortfolioState extends State<Portfolio> {
                 urlLink:
                     'https://play.google.com/store/apps/details?id=com.eatos.pos&hl=en'),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.pink,
                 titleColor: Colors.pink,
                 context: context,
                 logoUrl: 'assets/images/eatos_logo_2.png',
@@ -233,6 +247,8 @@ class _PortfolioState extends State<Portfolio> {
                 buttonText: 'Hidden',
                 urlLink: ''),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.orange,
                 titleColor: Colors.orange,
                 context: context,
                 logoUrl: 'assets/images/babuland_logo.png',
@@ -245,6 +261,8 @@ class _PortfolioState extends State<Portfolio> {
                 buttonText: 'iOS Link',
                 urlLink: 'https://apps.apple.com/us/app/babuland/id1644669214'),
             _portfolioCard(
+                buttonTextColor: Colors.white,
+                buttonColor: Colors.orange,
                 titleColor: Colors.orange,
                 context: context,
                 logoUrl: 'assets/images/babuland_logo.png',
@@ -277,6 +295,8 @@ class _PortfolioState extends State<Portfolio> {
     required String buttonText,
     required String urlLink,
     Color? titleColor,
+    Color? buttonColor,
+    Color? buttonTextColor,
     String? logoUrl,
     bool? imageOnRight,
     bool? isLinkHidden,
@@ -351,7 +371,7 @@ class _PortfolioState extends State<Portfolio> {
                         style: TextStyle(
                             color: Colors.grey,
                             fontSize: .017.sh,
-                            fontWeight: FontWeight.w400),
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
@@ -373,13 +393,13 @@ class _PortfolioState extends State<Portfolio> {
                     decoration: BoxDecoration(
                         color: isLinkHidden == true
                             ? Colors.grey.shade400
-                            : Colors.lightGreenAccent,
+                            : buttonColor ?? Colors.lightGreenAccent,
                         borderRadius: BorderRadius.circular(8)),
                     child: Center(
                       child: Text(
                         buttonText,
                         style: TextStyle(
-                            color: Colors.black87,
+                            color: buttonTextColor ?? Colors.black87,
                             fontSize: .02.sh,
                             fontWeight: FontWeight.w600),
                       ),

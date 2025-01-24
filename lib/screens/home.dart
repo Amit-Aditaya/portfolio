@@ -143,13 +143,14 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: .03.sh),
               const Contact(),
               SizedBox(height: .03.sh),
-              Align(
+              Center(
                 //   alignment: Alignment.centerLeft,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: .1.sw),
                   padding: EdgeInsets.symmetric(horizontal: 0.01.sw),
                   child: Text(
                     'Copyright (c) 2024 Amit Aditaya, All rights reserved',
+                    textAlign: TextAlign.center,
                     style: headerStyle.copyWith(
                         color: Colors.grey, fontSize: .015.sh),
                   ),
